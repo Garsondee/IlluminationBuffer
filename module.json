@@ -1,7 +1,7 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "illuminationbuffer",
+  "title": "Illumination Buffer - API",
+  "description": "A real-time graphics utility that intercepts and caches the final composite lightmap from Foundry VTT's lighting render pass. Using a low-level WebGL intercept and a direct GPU-to-GPU copy (blit), this module provides a persistent, scene-sized PIXI.RenderTexture updated on each lighting refresh with minimal performance overhead. The resulting texture is exposed via a simple API, designed to be fed directly into custom PIXI.Filters and shaders as a sampler2D uniform. This enables developers to create sophisticated, real-time visual effects that react dynamically to the scene's illumination.",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
@@ -12,9 +12,9 @@
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "Ingram Blakelock",
+      "url": "",
+      "discord": "garsondee"
     }
   ],
   "relationships": {
