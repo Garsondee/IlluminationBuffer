@@ -20,21 +20,23 @@ This information is exposed as a GPU texture resource, intended to be fed direct
 
 * Building complex, layered lighting models.
 
+
 ## How It Works
 
 Foundry VTT's lighting is rendered in a multi-stage process using ephemeral (short-lived) textures that are discarded after each frame. Attempting to capture this via high-level hooks is unreliable.
 
 This module uses libWrapper to precisely intercept the moment the final illumination texture is generated.
 
-    When API mode is active, the module registers a wrapper on Foundry's internal canvas.effects.illumination.filter.apply method. This is the exact function where the final, combined illumination texture is used.
+1.) When API mode is active, the module registers a wrapper on Foundry's internal canvas.effects.illumination.filter.apply method. This is the exact function where the final, combined illumination texture is used.
 
-    Inside the wrapper, the module gains access to the engine's temporary illumination texture.
+2.) Inside the wrapper, the module gains access to the engine's temporary illumination texture.
 
-    It then performs a direct GPU-to-GPU copy (a blit) from the engine's texture to a persistent PIXI.RenderTexture managed by this module.
+3.) It then performs a direct GPU-to-GPU copy (a blit) from the engine's texture to a persistent PIXI.RenderTexture managed by this module.
 
-    This operation is extremely fast as the data never needs to be transferred from the GPU to the CPU.
+4.) This operation is extremely fast as the data never needs to be transferred from the GPU to the CPU.
 
-    The module's API then exposes this persistent texture for other modules to use in the same rendering frame.
+5.) The module's API then exposes this persistent texture for other modules to use in the same rendering frame.
+
 
 ## API and Usage Guide
 
@@ -65,7 +67,11 @@ api.getLightingTexture(): PIXI.RenderTexture | null
 Returns a direct reference to the persistent PIXI.RenderTexture containing the scene's illumination data. The texture is a greyscale image where the red channel represents the light level (1.0 is fully lit, 0.0 is fully dark).
 
 Returns null if the module is in debug mode or has not yet initialized. The texture's valid property can also be checked to ensure it contains data.
-Full Example: The "Darkness Mask" Filter
+
+
+## Full Example: The "Darkness Mask" Filter
+
+
 
 Here is a practical example of how to create a PIXI.Filter that uses the illumination buffer to make a sprite's texture visible only in areas with less than 20% light.
 
