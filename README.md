@@ -5,7 +5,7 @@
 
 ![alt text](https://img.shields.io/badge/License-MIT-green.svg)
 
-A real-time graphics utility that intercepts and caches the final composite lightmap from Foundry VTT's lighting render pass. This module provides a persistent, scene-sized PIXI.RenderTexture that is updated on each lighting refresh with minimal performance overhead, enabling developers to create sophisticated, real-time visual effects that react dynamically to the scene's illumination.
+An API module for Foundry VTT V13+ that intercepts and caches the final composite lightmap from Foundry VTT's lighting render pass. This module provides a persistent, scene-sized PIXI.RenderTexture that is updated on each lighting refresh with minimal performance overhead, enabling developers to create sophisticated, real-time visual effects that react dynamically to the scene's illumination.
 What is This?
 
 IlluminationBuffer is a developer tool. It does not provide any direct user-facing features on its own. Its sole purpose is to solve a complex graphics problem: how to get an efficient, real-time reference to the scene's complete lighting information.
