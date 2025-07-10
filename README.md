@@ -12,13 +12,13 @@ IlluminationBuffer is a developer tool. It does not provide any direct user-faci
 
 This information is exposed as a GPU texture resource, intended to be fed directly into custom PIXI.Filter instances and GLSL shaders. This allows for advanced effects such as:
 
-    Creating textures or tiles that are only visible in darkness.
+* Creating textures or tiles that are only visible in darkness.
 
-    Masking visual effects to only appear in well-lit areas.
+* Masking visual effects to only appear in well-lit areas.
 
-    Applying color grading or other screen-space effects based on the underlying light level.
+* Applying color grading or other screen-space effects based on the underlying light level.
 
-    Building complex, layered lighting models.
+* Building complex, layered lighting models.
 
 ## How It Works
 
